@@ -29,7 +29,7 @@ t.window.msaa = 0
 
 w = t.window
 ```
-
+[link-to-collbacks]()
 After setting up your config function you can require window module and use it
 
 ```lua
@@ -38,12 +38,12 @@ lovr.window = require 'lovr-window'
 function lovr.load()
 	-- print all window parameters into console
 	local mode = lovr.window.getMode()
-    for k,v in pairs(mode) do
-    	print(k, v)
-    end
-    
-    -- sets window resolution, opacity and title
-    lovr.window.setMode(1280, 720, {title = "Hello, Window!", resizable = true, opacity = 0.5})
+	for k,v in pairs(mode) do
+		print(k, v)
+	end
+	
+	-- sets window resolution, opacity and title
+	lovr.window.setMode(1280, 720, {title = "Hello, Window!", resizable = true, opacity = 0.5})
 end
 
 function lovr.visible(val)
@@ -90,31 +90,31 @@ end
 ---
 - `window.getMode()` *Gets the display mode and properties of the window.*
 	###### Returns
-    - **`number`**` width`
-    - **`number`**` height`
-    - **`table`**` flags` The flags table with the options:
-    	- **`string`**`title`
-    	- **`number`**`x`
-    		> X position of the window on screen.
-    		> 
-    	- **`number`**`y`
-    		> Y position of the window on screen.
-    		> 
-    	- **`number`**`minwidth`
-    		> The minimum width of the window, if it's resizable.
-    		> 
-    	- **`number`**`minheight`
-    		> The minimum height of the window, if it's resizable.
-    		> 
-    	- **`number`**`maxwidth`
-    		> The maximum width of the window, if it's resizable.
-    		> 
-    	- **`number`**`maxheight`
-    		> The maximum height of the window, if it's resizable.
-    		> 
-    	- **`boolean`**`fullscreen`
-    		> `true` if window is in fullscreen mode, `false` otherwise.
-    		> 
+	- **`number`**` width`
+	- **`number`**` height`
+	- **`table`**` flags` The flags table with the options:
+		- **`string`**`title`
+		- **`number`**`x`
+			> X position of the window on screen.
+			> 
+		- **`number`**`y`
+			> Y position of the window on screen.
+			> 
+		- **`number`**`minwidth`
+			> The minimum width of the window, if it's resizable.
+			> 
+		- **`number`**`minheight`
+			> The minimum height of the window, if it's resizable.
+			> 
+		- **`number`**`maxwidth`
+			> The maximum width of the window, if it's resizable.
+			> 
+		- **`number`**`maxheight`
+			> The maximum height of the window, if it's resizable.
+			> 
+		- **`boolean`**`fullscreen`
+			> `true` if window is in fullscreen mode, `false` otherwise.
+			> 
 		- **`string`**`fullscreentype`
 			> For default fullscreen mode value is `"exclusive"`, for borderless fullscreen windowed mode is `"desktop"` and `nil` if window in windowed mode.
 			> 
@@ -136,35 +136,35 @@ end
 - `window.setMode(width, height, flags)` *Sets the display mode and properties of the window.*
 	> 
 	###### Arguments
-    - **`number`**` width`
-    - **`number`**` height`
+	- **`number`**` width`
+	- **`number`**` height`
 	- **`table`**` flags` The flags table with the options:
 		>
-    	- **`string`**`title`
-    		> New title for the window.
-    		> 
-    	- **`number`**`x`
-    		> `nil` if window is centered.
-    		> 
-    	- **`number`**`y`
-    		> `nil` if window is centered.
-    		> 
-    	- **`number`**`minwidth`
-    		> The minimum width of the window, if it's resizable.
-    		> 
-    	- **`number`**`minheight`
-    		> The minimum height of the window, if it's resizable.
-    		> 
-    	- **`number`**`maxwidth`
-    		> The maximum width of the window, if it's resizable. `7680` if not specified.
-    		> 
-    	- **`number`**`maxheight`
-    		> The maximum height of the window, if it's resizable. `4320` if not specified.
-    		>
-    	- **`boolean`**`fullscreen`
-    		> Should the window be in fullscreen mode. `true` for fullscreen or `false` for windowed mode.
-    		> 
-    	- **`string`**`fullscreentype`
+		- **`string`**`title`
+			> New title for the window.
+			> 
+		- **`number`**`x`
+			> `nil` if window is centered.
+			> 
+		- **`number`**`y`
+			> `nil` if window is centered.
+			> 
+		- **`number`**`minwidth`
+			> The minimum width of the window, if it's resizable.
+			> 
+		- **`number`**`minheight`
+			> The minimum height of the window, if it's resizable.
+			> 
+		- **`number`**`maxwidth`
+			> The maximum width of the window, if it's resizable. `7680` if not specified.
+			> 
+		- **`number`**`maxheight`
+			> The maximum height of the window, if it's resizable. `4320` if not specified.
+			>
+		- **`boolean`**`fullscreen`
+			> Should the window be in fullscreen mode. `true` for fullscreen or `false` for windowed mode.
+			> 
+		- **`string`**`fullscreentype`
 			> Use `"desktop"` for borderless fullscreen windowed mode or `"exclusive"` for default fullscreen mode.
 			> 
 		- **`boolean`**`resizable`
@@ -192,33 +192,33 @@ end
 ---
 - `window.setOpacity(value)` *Sets opacity value of the Window.*
 	###### Arguments
-    - **`number`**`opacity`
-    	> **`number`** value between `0` and `1`
-    	> 
+	- **`number`**`opacity`
+		> **`number`** value between `0` and `1`
+		> 
 ---
 - `window.getOpacity()` *Returns opacity value of the Window.*
 	###### Returns
-    - **`number`**`opacity`
+	- **`number`**`opacity`
 ---
 - `window.setPosition(x, y)` *Sets the position of the window on the screen.*
 	> This function sets the paramter of the window `centered` to `false`.
 	> 
 	###### Arguments
-    - **`number`**`x`
-    	> X position of the window on screen.
-    	> 
-    - **`number`**`y`
-    	> Y position of the window on screen.
-    	> 
+	- **`number`**`x`
+		> X position of the window on screen.
+		> 
+	- **`number`**`y`
+		> Y position of the window on screen.
+		> 
 ---
 - `window.getPosition()` *Gets the position of the window on the screen.*
 	###### Returns
 	- **`number`**`x`
-    	> X position of the window on screen.
-    	> 
-    - **`number`**`y`
-    	> Y position of the window on screen.
-    	> 
+		> X position of the window on screen.
+		> 
+	- **`number`**`y`
+		> Y position of the window on screen.
+		> 
 ---
 - `window.focus()` *Sets focus on the window.*
 	###### Returns `nothing`
@@ -234,7 +234,7 @@ end
 ---
 - `window.hasFocus()` *Checks if the game window has focus.*
 	###### Returns
-    - **`boolean`**`focus`
+	- **`boolean`**`focus`
 		> `true` if the window has focus or `false` if not.
 		> 
 ---
@@ -264,21 +264,21 @@ end
 ---
 - `window.visible(state)` *Makes the window visible / invisible.*
 	###### Arguments
-    - **`boolean`**`state`
+	- **`boolean`**`state`
 		> `true` if the window is visible or `false` if not.
 		> 
 ---
 - `window.isVisible()` *Checks if the game window is visible.*
 	###### Returns
-    - **`boolean`**`visible`
+	- **`boolean`**`visible`
 		> `true` if the window is visible or `false` if not.
 		> 
 ---
 - `window.setFullscreen(fullscreen[, fstype])` *Enters or exits fullscreen.*
 	###### Arguments
 	- **`boolean`**`fullscreen`
-    	> `true` for fullscreen, or `false` for windowed mode.
-    	> 
+		> `true` for fullscreen, or `false` for windowed mode.
+		> 
 	- **`string`**`fullscreentype`
 		> Use `"desktop"` for borderless fullscreen windowed mode or `"exclusive"` for default fullscreen mode.
 		> 
@@ -286,36 +286,36 @@ end
 - `window.getFullscreen()` *Gets whether the window is fullscreen.*
 	###### Returns
 	- **`boolean`**`fullscreen`
-    	> `true` if the window is in fullscreen mode, `false` otherwise.
-    	> 
+		> `true` if the window is in fullscreen mode, `false` otherwise.
+		> 
 	- **`string`**`fullscreentype`
 		> `"desktop"` if window in borderless fullscreen windowed mode or `"exclusive"` if window is in default fullscreen mode. For windowed mode fullscreen type is `nil`.
 		> 
-
+[link-to-collbacks]
 ### Callbacks
 - `love.resize(width, height)` *Called when the window is resized, for example if the user resizes the window*
 	###### Arguments
-    - **`number`**`width`
-    	> New width of the window after resize.
-    	> 
-    - **`number`**`height`
-    	> New height of the window after resize.
-    	> 
+	- **`number`**`width`
+		> New width of the window after resize.
+		> 
+	- **`number`**`height`
+		> New height of the window after resize.
+		> 
 	###### Example
-    ```lua
-    function love.resize(width, height)
-    	print(("Window resized to width: %d and height: %d."):format(width, height))
+	```lua
+	function love.resize(width, height)
+		print(("Window resized to width: %d and height: %d."):format(width, height))
    	end
-    ```
+	```
 ---
 - `love.visible(visible)` *Callback function triggered when window is minimized/hidden or unminimized by the user.*
 	###### Arguments
-    - **`booleand`**`visible`
-    	> `true` if the window is visible, `false` if it isn't.
-    	> 
+	- **`booleand`**`visible`
+		> `true` if the window is visible, `false` if it isn't.
+		> 
 	###### Example
-    ```lua
-    function love.visible(visible)
-    	print(visible and "Window is visible!" or "Window is not visible!")
+	```lua
+	function love.visible(visible)
+		print(visible and "Window is visible!" or "Window is not visible!")
    	end
-    ```
+	```
