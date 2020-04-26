@@ -29,7 +29,6 @@ t.window.msaa = 0
 
 w = t.window
 ```
-[link-to-collbacks](lovr-window#lovr-window)
 After setting up your config function you can require window module and use it
 
 ```lua
