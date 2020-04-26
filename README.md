@@ -16,8 +16,6 @@ t.window.width = 1280
 t.window.height = 720
 t.window.minwidth = 320
 t.window.minheight = 180
-t.window.maxwidth = 7680
-t.window.maxheight = 4320
 t.window.x = nil
 t.window.y = nil
 t.window.centered = true
@@ -105,13 +103,7 @@ end
 			> 
 		- **`number`**`minheight`
 			> The minimum height of the window, if it's resizable.
-			> 
-		- **`number`**`maxwidth`
-			> The maximum width of the window, if it's resizable.
-			> 
-		- **`number`**`maxheight`
-			> The maximum height of the window, if it's resizable.
-			> 
+			>
 		- **`boolean`**`fullscreen`
 			> `true` if window is in fullscreen mode, `false` otherwise.
 			> 
@@ -154,12 +146,6 @@ end
 			> 
 		- **`number`**`minheight`
 			> The minimum height of the window, if it's resizable.
-			> 
-		- **`number`**`maxwidth`
-			> The maximum width of the window, if it's resizable. `7680` if not specified.
-			> 
-		- **`number`**`maxheight`
-			> The maximum height of the window, if it's resizable. `4320` if not specified.
 			>
 		- **`boolean`**`fullscreen`
 			> Should the window be in fullscreen mode. `true` for fullscreen or `false` for windowed mode.
