@@ -29,7 +29,7 @@ t.window.msaa = 0
 
 w = t.window
 ```
-[link-to-collbacks]()
+[link-to-collbacks](lovr-window#lovr-window)
 After setting up your config function you can require window module and use it
 
 ```lua
@@ -291,7 +291,7 @@ end
 	- **`string`**`fullscreentype`
 		> `"desktop"` if window in borderless fullscreen windowed mode or `"exclusive"` if window is in default fullscreen mode. For windowed mode fullscreen type is `nil`.
 		> 
-[link-to-collbacks]
+
 ### Callbacks
 - `love.resize(width, height)` *Called when the window is resized, for example if the user resizes the window*
 	###### Arguments
