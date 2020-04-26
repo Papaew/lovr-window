@@ -5,6 +5,7 @@ A window module for LÖVR.
 ### If you use lovr 0.13.0 or older you need to update [glfw3.dll](https://www.glfw.org/download.html) to 3.3 version
 
 First of all you need to add some new parameters in your `lovr.conf()`
+>
 Just replace all old window related code to this:
 ```lua
 t.window.title = "LÖVR"
