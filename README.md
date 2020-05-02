@@ -70,6 +70,7 @@ end
 - `window.getFullscreen()` *Gets whether the window is fullscreen.*
 ###### Callbacks
 - `love.resize(w, h)` *Called when the window is resized.*
+- `love.maximized(state)` *Called when the window is maximized.*
 
 # Documentation
 ### Functions
@@ -268,5 +269,16 @@ end
 	```lua
 	function love.resize(width, height)
 		print(("Window resized to width: %d and height: %d."):format(width, height))
+	end
+	```
+- `love.maximized(state)` *Called when the window is maximized.*
+	###### Arguments
+	- **`boolead`**`state`
+		> New width of the window after resize.
+		> 
+	###### Example
+	```lua
+	function lovr.maximized(state)
+		print("Window maximized: ".. tostring(state))
 	end
 	```
