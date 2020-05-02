@@ -22,15 +22,10 @@ ffi.cdef [[
 		int refreshRate;
 	} GLFWvidmode;
 	const GLFWvidmode* glfwGetVideoMode(GLFWmonitor* monitor);
-	const char* glfwGetMonitorName(GLFWmonitor* monitor);
 	void glfwSetWindowMonitor(GLFWwindow* window, GLFWmonitor* monitor, int xpos, int ypos, int width, int height, int refreshRate); //+
-	
-	void glfwGetFramebufferSize(GLFWwindow* window, int *width, int *height);
 
 	void glfwSetWindowAttrib(GLFWwindow* window, int attrib, int value); //+
 	int glfwGetWindowAttrib(GLFWwindow* window, int attrib); //+
-	int glfwWindowShouldClose(GLFWwindow* window);
-	void glfwSetWindowShouldClose(GLFWwindow* window, int value);
 	
 	void glfwSetWindowSize(GLFWwindow* window, int width, int height); //-
 	void glfwGetWindowSize(GLFWwindow* window, int *width, int *height); //-
@@ -55,10 +50,6 @@ ffi.cdef [[
 	void glfwSetWindowOpacity(GLFWwindow* window, float opacity); //+
 	float glfwGetWindowOpacity(GLFWwindow* window); //+
 	
-	typedef void(*GLFWwindowsizefun) (GLFWwindow*, int, int);
-	GLFWwindowsizefun glfwSetWindowSizeCallback(GLFWwindow* window, GLFWwindowsizefun callback); //+
-
-	GLFWwindow* glfwCreateWindow(int width, int height, const char* title, GLFWmonitor* monitor, GLFWwindow* share);
 ]]
 local W = C.glfwGetCurrentContext()
 local monitor = C.glfwGetWindowMonitor(W)
@@ -74,10 +65,6 @@ local function _resize_callback(w, h)
 	window.canvas = lovr.graphics.newCanvas(w, h, {format = 'rgba', stereo = false, msaa = window.msaa, mipmaps = false})
 	lovr.event.push('resize', w, h)
 end
-
--- local function _visible_callback(visible)
--- 	lovr.event.push('visible', visible)
--- end
 ---------------------------------------------------------------------------------------------------------------
 local function _windowRender()
 	lovr.graphics.setCanvas(window.canvas)
