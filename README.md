@@ -64,10 +64,10 @@ end
 - `window.maximize()` *Makes the window as large as possible.*
 - `window.minimize()` *Minimizes the window to the system's task bar / dock.*
 - `window.restore()` *Restores the size and position of the window if it was minimized or maximized.*
-- `window.isMaximized()` *Gets whether the Window is currently maximized.*
-- `window.isMinimized()` *Gets whether the Window is currently minimized.*
 - `window.setTitle(title)` *Sets the window title.*
 - `window.getTitle()` *Gets the window title.*
+- `window.setVSync(enable[, framelimit])` *Sets vertical synchronization mode and frame limit.*
+- `window.getVSync()` *Gets current vertical synchronization value and frame limit.*
 - `window.visible(state)` *Makes the window visible / invisible.*
 - `window.isVisible()` *Checks if the game window is visible.*
 - `window.setFullscreen(fullscreen[, fstype])` *Enters or exits fullscreen.*
@@ -212,18 +212,6 @@ end
 - `window.restore()` *Restores the size and position of the window if it was minimized or maximized.*
 	###### Returns `nothing`
 ---
-- `window.isMaximized()` *Gets whether the Window is currently maximized.*
-	###### Returns
-	- **`boolean`**`maximized`
-		> `true` if the window is maximized or `false` if not.
-		> 
----
-- `window.isMinimized()` *Gets whether the Window is currently minimized.*
-	###### Returns
-	- **`boolean`**`minimized`
-		> `true` if the window is minimized or `false` if not.
-		> 
----
 - `window.setTitle(title)` *Sets the window title.*
 	###### Arguments
 	- **`string`**`title`
@@ -234,6 +222,24 @@ end
 	###### Returns
 	- **`string`**`title`
 		> Title of the window.
+		> 
+---
+- `window.setVSync(state[, framelimit])` *Sets the window title.*
+	###### Arguments
+	- **`boolean`**`state`
+		> Current vsync status. `true` if enabled, `false` otherwise.
+		> 
+	- **`number`**`framelimit`
+		> Value of maximum lovr.update(dt) calls per second.
+		> 
+---
+- `window.getVSync()` *Gets the window title.*
+	###### Returns
+	- **`boolean`**`state`
+		> Current vsync status. `true` if enabled, `false` otherwise.
+		> 
+	- **`number`**`framelimit`
+		> Value of maximum lovr.update(dt) calls per second. If vsync is disabled returns `nil`.
 		> 
 ---
 - `window.visible(state)` *Makes the window visible / invisible.*
