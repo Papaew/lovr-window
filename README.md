@@ -52,7 +52,6 @@ end
 
 # API
 ###### Functions
-- `window.close()` *Closes the window.*
 - `window.getMode()` *Gets the display mode and properties of the window.*
 - `window.setMode(width, height[, flags])` *Sets the display mode and properties of the window.*
 - `window.requestAttention()` *Causes the window to request the attention of the user if it is not in the foreground.*
@@ -75,9 +74,6 @@ end
 
 # Documentation
 ### Functions
-- `window.close()` *Closes the window.*
-	###### Returns `nothing`
----
 - `window.getMode()` *Gets the display mode and properties of the window.*
 	###### Returns
 	- **`number`**` width`
