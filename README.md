@@ -24,7 +24,6 @@ t.window.borderless = false
 t.window.resizable = true -- Manual window resizing with mouse doesn't call lovr.resize() callback right now
 t.window.opacity = 1
 t.window.vsync = 0
-t.window.framelimit = 60 -- Frame limit for timestep in lovr.run()
 t.window.msaa = 0
 
 w = t.window
