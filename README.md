@@ -23,7 +23,7 @@ t.window.topmost = false
 t.window.borderless = false
 t.window.resizable = true -- Manual window resizing with mouse doesn't call lovr.resize() callback right now
 t.window.opacity = 1
-t.window.vsync = false -- State can be `true` if vsync enabled, `false` otherwise
+t.window.vsync = 0
 t.window.framelimit = 60 -- Frame limit for timestep in lovr.run()
 t.window.msaa = 0
 
@@ -66,8 +66,6 @@ end
 - `window.restore()` *Restores the size and position of the window if it was minimized or maximized.*
 - `window.setTitle(title)` *Sets the window title.*
 - `window.getTitle()` *Gets the window title.*
-- `window.setVSync(enable[, framelimit])` *Sets vertical synchronization mode and frame limit.*
-- `window.getVSync()` *Gets current vertical synchronization value and frame limit.*
 - `window.visible(state)` *Makes the window visible / invisible.*
 - `window.isVisible()` *Checks if the game window is visible.*
 - `window.setFullscreen(fullscreen[, fstype])` *Enters or exits fullscreen.*
@@ -222,24 +220,6 @@ end
 	###### Returns
 	- **`string`**`title`
 		> Title of the window.
-		> 
----
-- `window.setVSync(state[, framelimit])` *Sets the window title.*
-	###### Arguments
-	- **`boolean`**`state`
-		> Current vsync status. `true` if enabled, `false` otherwise.
-		> 
-	- **`number`**`framelimit`
-		> Value of maximum lovr.update(dt) calls per second.
-		> 
----
-- `window.getVSync()` *Gets the window title.*
-	###### Returns
-	- **`boolean`**`state`
-		> Current vsync status. `true` if enabled, `false` otherwise.
-		> 
-	- **`number`**`framelimit`
-		> Value of maximum lovr.update(dt) calls per second. If vsync is disabled returns `nil`.
 		> 
 ---
 - `window.visible(state)` *Makes the window visible / invisible.*
