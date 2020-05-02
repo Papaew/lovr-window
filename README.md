@@ -41,8 +41,8 @@ function lovr.load()
 		print(k, v)
 	end
 	
-	-- sets window resolution, opacity and title
-	lovr.window.setMode(1280, 720, {title = "Hello, Window!", resizable = true, opacity = 0.5})
+	-- sets window resolution, opacity, msaa and title
+	lovr.window.setMode(1280, 720, {title = "Hello, Window!", resizable = true, opacity = 0.5, msaa = 4})
 end
 
 function lovr.resize(width, height)
@@ -116,6 +116,9 @@ end
 			> 
 		- **`number`**`opacity`
 			> Window's opacity value between `0` and `1`
+		- **`number`**`msaa`
+			> The number of antialiasing samples used.
+			
 ---
 - `window.setMode(width, height, flags)` *Sets the display mode and properties of the window.*
 	> 
@@ -162,6 +165,9 @@ end
 			> 
 		- **`number`**`opacity`
 			> **`number`** value between `0` and `1`
+			>
+		- **`number`**`msaa`
+			> **`number`** The number of antialiasing samples to use
 ---
 - `window.requestAttention()` *Causes the window to request the attention of the user if it is not in the foreground.*
 	> In Windows the taskbar icon will flash, and in OS X the dock icon will bounce.
