@@ -22,33 +22,36 @@ ffi.cdef [[
 		int refreshRate;
 	} GLFWvidmode;
 	const GLFWvidmode* glfwGetVideoMode(GLFWmonitor* monitor);
-	void glfwSetWindowMonitor(GLFWwindow* window, GLFWmonitor* monitor, int xpos, int ypos, int width, int height, int refreshRate); //+
+	void glfwSetWindowMonitor(GLFWwindow* window, GLFWmonitor* monitor, int xpos, int ypos, int width, int height, int refreshRate);
 
-	void glfwSetWindowAttrib(GLFWwindow* window, int attrib, int value); //+
-	int glfwGetWindowAttrib(GLFWwindow* window, int attrib); //+
+	void glfwSetWindowAttrib(GLFWwindow* window, int attrib, int value);
+	int glfwGetWindowAttrib(GLFWwindow* window, int attrib);
 	
-	void glfwSetWindowSize(GLFWwindow* window, int width, int height); //-
-	void glfwGetWindowSize(GLFWwindow* window, int *width, int *height); //-
-	void glfwSetWindowSizeLimits(GLFWwindow* window, int minwidth, int minheight, int maxwidth, int maxheight); //-
+	void glfwSetWindowSize(GLFWwindow* window, int width, int height);
+	void glfwGetWindowSize(GLFWwindow* window, int *width, int *height);
+	void glfwSetWindowSizeLimits(GLFWwindow* window, int minwidth, int minheight, int maxwidth, int maxheight);
 
-	void glfwSetWindowPos(GLFWwindow* window, int xpos, int ypos); //+
-	void glfwGetWindowPos(GLFWwindow* window, int *xpos, int *ypos); //+
+	void glfwSetWindowPos(GLFWwindow* window, int xpos, int ypos);
+	void glfwGetWindowPos(GLFWwindow* window, int *xpos, int *ypos);
 
-	void glfwMaximizeWindow(GLFWwindow* window); //+
-	void glfwIconifyWindow(GLFWwindow *window); //+
-	void glfwRestoreWindow(GLFWwindow *window); //+
+	void glfwMaximizeWindow(GLFWwindow* window);
+	void glfwIconifyWindow(GLFWwindow *window);
+	void glfwRestoreWindow(GLFWwindow *window);
 
-	void glfwSetWindowTitle(GLFWwindow* window, const char* title); //+
+	void glfwSetWindowTitle(GLFWwindow* window, const char* title);
 	
-	void glfwShowWindow(GLFWwindow* window); //+
-	void glfwHideWindow(GLFWwindow* window); //+
+	void glfwShowWindow(GLFWwindow* window);
+	void glfwHideWindow(GLFWwindow* window);
 
-	void glfwFocusWindow(GLFWwindow* window); //+
+	void glfwFocusWindow(GLFWwindow* window);
 
-	void glfwRequestWindowAttention(GLFWwindow* window); //+
+	void glfwRequestWindowAttention(GLFWwindow* window);
 
-	void glfwSetWindowOpacity(GLFWwindow* window, float opacity); //+
-	float glfwGetWindowOpacity(GLFWwindow* window); //+
+	void glfwSetWindowOpacity(GLFWwindow* window, float opacity);
+	float glfwGetWindowOpacity(GLFWwindow* window);
+
+	typedef void(*GLFWwindowmaximizefun) (GLFWwindow*, int);
+	GLFWwindowmaximizefun glfwSetWindowMaximizeCallback(GLFWwindow* window, GLFWwindowmaximizefun callback);
 	
 ]]
 local W = C.glfwGetCurrentContext()
@@ -273,6 +276,15 @@ end
 function window.getFullscreen()
 	return window.fullscreen, window.fullscreentype
 end
+---------------------------------------------------------------------------------------------------------------
+C.glfwSetWindowMaximizeCallback(W, function(target, maximized)
+	if target == W then
+		local width, height = ffi.new('int[1]'), ffi.new('int[1]')
+		C.glfwGetWindowSize(W, width, height)
+		_resize_callback(width[0], height[0])
+		lovr.event.push('maximized', maximized == 1)
+	end
+end)
 ---------------------------------------------------------------------------------------------------------------
 window.setMode(window.width, window.height, {
 							title = window.title,
