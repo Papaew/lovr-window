@@ -45,10 +45,6 @@ function lovr.load()
 	lovr.window.setMode(1280, 720, {title = "Hello, Window!", resizable = true, opacity = 0.5})
 end
 
-function lovr.visible(val)
-	print(val)
-end
-
 function lovr.resize(width, height)
 	print(width, height)
 end
