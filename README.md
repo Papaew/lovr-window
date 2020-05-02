@@ -10,20 +10,21 @@ Just replace all old window related code to this:
 ```lua
 t.window.title = "LÖVR"
 t.window.icon = nil
-t.window.fullscreen = false
-t.window.fullscreentype = "desktop"
+t.window.fullscreen = false 
+t.window.fullscreentype = "exclusive" 
 t.window.width = 1280
 t.window.height = 720
-t.window.minwidth = 320
+t.window.minwidth = 100
 t.window.minheight = 180
 t.window.x = nil
 t.window.y = nil
-t.window.centered = true
+t.window.centered = false
 t.window.topmost = false
 t.window.borderless = false
-t.window.resizable = true
+t.window.resizable = true -- Manual window resizing with mouse doesn't call lovr.resize() callback right now
 t.window.opacity = 1
-t.window.vsync = 0
+t.window.vsync = false -- State can be `true` if vsync enabled, `false` otherwise
+t.window.framelimit = 60 -- Frame limit for timestep in lovr.run()
 t.window.msaa = 0
 
 w = t.window
@@ -67,7 +68,6 @@ end
 - `window.maximize()` *Makes the window as large as possible.*
 - `window.minimize()` *Minimizes the window to the system's task bar / dock.*
 - `window.restore()` *Restores the size and position of the window if it was minimized or maximized.*
-- `window.hasFocus()` *Checks if the game window has focus.*
 - `window.isMaximized()` *Gets whether the Window is currently maximized.*
 - `window.isMinimized()` *Gets whether the Window is currently minimized.*
 - `window.setTitle(title)` *Sets the window title.*
@@ -76,10 +76,8 @@ end
 - `window.isVisible()` *Checks if the game window is visible.*
 - `window.setFullscreen(fullscreen[, fstype])` *Enters or exits fullscreen.*
 - `window.getFullscreen()` *Gets whether the window is fullscreen.*
-- `mbox(message[, title, type, buttonlist])` *Displays a message box.*
 ###### Callbacks
-- `love.resize(w, h)` *Called when the window is resized, for example if the user resizes the window*
-- `love.visible(visible)` *Callback function triggered when window is minimized/hidden or unminimized by the user.*
+- `love.resize(w, h)` *Called when the window is resized.*
 
 # Documentation
 ### Functions
@@ -218,12 +216,6 @@ end
 - `window.restore()` *Restores the size and position of the window if it was minimized or maximized.*
 	###### Returns `nothing`
 ---
-- `window.hasFocus()` *Checks if the game window has focus.*
-	###### Returns
-	- **`boolean`**`focus`
-		> `true` if the window has focus or `false` if not.
-		> 
----
 - `window.isMaximized()` *Gets whether the Window is currently maximized.*
 	###### Returns
 	- **`boolean`**`maximized`
@@ -279,7 +271,9 @@ end
 		> 
 
 ### Callbacks
-- `love.resize(width, height)` *Called when the window is resized, for example if the user resizes the window*
+- `love.resize(width, height)` *Called when the window is resized.*
+	> Right now because of missing functionality the callback will only be called when the window is resized programmatically.
+	>
 	###### Arguments
 	- **`number`**`width`
 		> New width of the window after resize.
@@ -291,17 +285,5 @@ end
 	```lua
 	function love.resize(width, height)
 		print(("Window resized to width: %d and height: %d."):format(width, height))
-   	end
-	```
----
-- `love.visible(visible)` *Callback function triggered when window is minimized/hidden or unminimized by the user.*
-	###### Arguments
-	- **`booleand`**`visible`
-		> `true` if the window is visible, `false` if it isn't.
-		> 
-	###### Example
-	```lua
-	function love.visible(visible)
-		print(visible and "Window is visible!" or "Window is not visible!")
-   	end
+	end
 	```
