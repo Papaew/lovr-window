@@ -106,11 +106,15 @@ width, height = window.getDisplayDimensions( index )
 - **[`number`](#number)** height
 
 
+
+
+
 ## getDisplayCount()
 ###### Function
 ``` lua
-count = window.getDisplayCount( )
+count = window.getDisplayCount()
 ```
+
 ###### Arguments
 None.
 
@@ -119,9 +123,49 @@ None.
 
 
 
-|lua types|
-|-|
-| ###### number |
-| ###### string |
-| ###### table |
-| ###### boolean |
+
+
+## getDisplayName()
+###### Function
+``` lua
+name = window.getDisplayName( index )
+```
+
+###### Arguments
+- **[`number`](Home#lua-types)** index
+
+###### Returns
+- **[`string`](#string)** name
+
+
+
+
+
+## getFullscreen()
+###### Function
+``` lua
+fullscreen, fullscreentype = window.getFullscreen()
+```
+
+###### Arguments
+None.
+
+###### Returns
+- **[`boolean`](#boolean)** fullscreen
+- **[`string`](#string)** fullscreentype
+
+
+
+
+
+## getIcon()
+###### Function
+``` lua
+icon = window.getIcon()
+```
+
+###### Arguments
+None.
+
+###### Returns
+- **[`Image`](https://lovr.org/docs/v0.15.0/Image)** icon
