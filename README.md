@@ -35,7 +35,7 @@ function lovr.load()
 		print(k, v)
 	end
 	
-	-- sets window resolution, opacity, msaa and title
+	-- sets window opacity, resolution and title
 	lovr.window.setMode(1280, 720, {title = "Hello, Window!", resizable = true, opacity = 0.5})
 end
 
