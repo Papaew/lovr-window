@@ -102,7 +102,7 @@ width, height = window.getDisplayDimensions( index )
 **[`number`](Home#lua-types)** index
 
 ###### Returns
-**[`number`](#number)** width
+**[`number`](#number)** width <br>
 **[`number`](#number)** height
 
 
