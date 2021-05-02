@@ -2,31 +2,26 @@
 A window module for LÖVR.
 
 # Usage
-### If you use lovr 0.13.0 or older you need to update [glfw3.dll](https://www.glfw.org/download.html) to 3.3 version
+### This library requires [glfw3.dll](https://www.glfw.org/download.html) 3.4+ version
 
 First of all you need to add some new parameters in your `lovr.conf()`
 >
-Just replace all old window related code to this:
+Just append this parameters next to window related code:
 ```lua
-t.window.title = "LÖVR"
-t.window.icon = nil
-t.window.fullscreen = false 
-t.window.fullscreentype = "exclusive" 
-t.window.width = 1080
-t.window.height = 600
-t.window.minwidth = 100
-t.window.minheight = 180
-t.window.x = nil
-t.window.y = nil
-t.window.centered = false
-t.window.topmost = false
-t.window.borderless = false
-t.window.resizable = true -- Manual window resizing with mouse doesn't call lovr.resize() callback right now
-t.window.opacity = 1
-t.window.vsync = 0
-t.window.msaa = 0
+-- additional window parameters
+t.window.fullscreentype = "desktop"	-- Choose between "desktop" fullscreen or "exclusive" fullscreen mode (string)
+t.window.x = nil			-- The x-coordinate of the window's position in the specified display (number)
+t.window.y = nil			-- The y-coordinate of the window's position in the specified display (number)
+t.window.minwidth = 1			-- Minimum window width if the window is resizable (number)
+t.window.minheight = 1			-- Minimum window height if the window is resizable (number)
+t.window.display = 1			-- Index of the monitor to show the window in (number)
+t.window.centered = false		-- Align window on the center of the monitor (boolean)
+t.window.topmost = false		-- Show window on top (boolean)
+t.window.borderless = false		-- Remove all border visuals from the window (boolean)
+t.window.resizable = false		-- Let the window be user-resizable (boolean)
+t.window.opacity = 1			-- Window opacity value (number)
 
-w = t.window
+conf = t.window
 ```
 After setting up your config function you can require window module and use it
 
@@ -44,241 +39,56 @@ function lovr.load()
 	lovr.window.setMode(1280, 720, {title = "Hello, Window!", resizable = true, opacity = 0.5, msaa = 4})
 end
 
-function lovr.resize(width, height)
-	print(width, height)
+function lovr.maximized( v, w,h )
+	print(v and "maximized" or "restored")
 end
+
+function lovr.dragdrop( paths )
+	for i=1, #paths do
+		--prints all file/directory paths dropped on the window
+		print(paths[i])
+	end
+end
+
+function lovr.windowmoved( x,y )
+	print("Current window position:", x,y)
+end
+
 ```
 
 # API
 ###### Functions
-- `window.getMode()` *Gets the display mode and properties of the window.*
-- `window.setMode(width, height[, flags])` *Sets the display mode and properties of the window.*
-- `window.requestAttention()` *Causes the window to request the attention of the user if it is not in the foreground.*
-- `window.setOpacity(value)` *Sets opacity value of the Window.*
-- `window.getOpacity()` *Returns opacity value of the Window.*
-- `window.setPosition(x, y)` *Sets the position of the window on the screen.*
-- `window.getPosition()` *Gets the position of the window on the screen.*
-- `window.focus()` *Sets focus on the window.*
-- `window.maximize()` *Makes the window as large as possible.*
-- `window.minimize()` *Minimizes the window to the system's task bar / dock.*
-- `window.restore()` *Restores the size and position of the window if it was minimized or maximized.*
-- `window.setTitle(title)` *Sets the window title.*
-- `window.getTitle()` *Gets the window title.*
-- `window.visible(state)` *Makes the window visible / invisible.*
-- `window.isVisible()` *Checks if the game window is visible.*
-- `window.setFullscreen(fullscreen[, fstype])` *Enters or exits fullscreen.*
-- `window.getFullscreen()` *Gets whether the window is fullscreen.*
+| Function | Description |
+|-|-|
+| [window.getDisplayDimensions( index )](#getDisplayDimensions) | Gets the width and height of the desktop |
+| [window.getDisplayCount()](#getDisplayCount) | Gets the number of connected monitors |
+| [window.getDisplayName( index )](#getDisplayName) | Gets the name of a display |
+| [window.getFullscreen()](#getFullscreen) | Gets whether the window is fullscreen |
+| [window.getIcon()](#getIcon) | Gets the window icon |
+| [window.getMode()](#getMode) | Gets the display mode and properties of the window |
+| [window.getOpacity()](#getOpacity) | Returns opacity value of the Window |
+| [window.getPosition()](#getPosition) | Gets the position of the window on the screen |
+| [window.getTitle()](#getTitle) | Gets the window title |
+| [window.isVisible()](#isVisible) | Checks if the game window is visible |
+| [window.maximize()](#maximize) | Makes the window as large as possible |
+| [window.minimize()](#minimize) | Minimizes the window to the system's task bar / dock |
+| [window.requestAttention()](#requestAttention) | Causes the window to request the attention of the user if it is not in the foreground |
+| [window.restore()](#restore) | Restores the size and position of the window if it was minimized or maximized |
+| [window.setFullscreen(fullscreen[, fstype])](#setFullscreen) | Enters or exits fullscreen |
+| [window.setIcon( source )](#setIcon) | Sets the window icon |
+| [window.setMode( width, height[, flags]) ](#setMode) | Sets the display mode and properties of the window |
+| [window.setOpacity( value )](#setOpacity) | Sets opacity value of the Window |
+| [window.setPosition( x,y )](#setPosition) | Sets the position of the window on the screen |
+| [window.setTitle( title )](#setTitle) | Sets the window title |
+| [window.focus()](#focus) | Sets focus on the window |
+| [window.visible( state )](#visible) | Makes the window visible / invisible |
+
 ###### Callbacks
-- `love.resize(w, h)` *Called when the window is resized.*
-- `love.maximized(state)` *Called when the window is maximized.*
+| Callback | Description |
+|-|-|
+[love.maximized( state, w,h )](#maximized) | Called when the window is maximized/restored |
+[love.windowmoved( x,y )](#windowmoved) | Callback function triggered when the window is moved |
+[love.dragdrop( paths )](#dragdrop) | Callback function triggered when a file/directory is dragged and dropped onto the window |
+
 
 # Documentation
-### Functions
-- `window.getMode()` *Gets the display mode and properties of the window.*
-	###### Returns
-	- **`number`**` width`
-	- **`number`**` height`
-	- **`table`**` flags` The flags table with the options:
-		- **`string`**`title`
-		- **`number`**`x`
-			> X position of the window on screen.
-			> 
-		- **`number`**`y`
-			> Y position of the window on screen.
-			> 
-		- **`number`**`minwidth`
-			> The minimum width of the window, if it's resizable.
-			> 
-		- **`number`**`minheight`
-			> The minimum height of the window, if it's resizable.
-			>
-		- **`boolean`**`fullscreen`
-			> `true` if window is in fullscreen mode, `false` otherwise.
-			> 
-		- **`string`**`fullscreentype`
-			> For default fullscreen mode value is `"exclusive"`, for borderless fullscreen windowed mode is `"desktop"` and `nil` if window in windowed mode.
-			> 
-		- **`boolean`**`resizable` 
-			> `true` if the window is resizable in windowed mode, `false` otherwise.
-			> 
-		- **`boolean`**`borderless`
-			> `true` if the window is borderless in windowed mode, `false` otherwise.
-			> 
-		- **`boolean`**`centered`
-			> `true` if the window is centered in windowed mode, `false` otherwise.
-			> 
-		- **`boolean`**`topmost`
-			> `true` if the window is topmost in windowed mode, `false` otherwise.
-			> 
-		- **`number`**`opacity`
-			> Window's opacity value between `0` and `1`
-		- **`number`**`msaa`
-			> The number of antialiasing samples used.
-			
----
-- `window.setMode(width, height, flags)` *Sets the display mode and properties of the window.*
-	> 
-	###### Arguments
-	- **`number`**` width`
-	- **`number`**` height`
-	- **`table`**` flags` The flags table with the options:
-		>
-		- **`string`**`title`
-			> New title for the window.
-			> 
-		- **`number`**`x`
-			> `nil` if window is centered.
-			> 
-		- **`number`**`y`
-			> `nil` if window is centered.
-			> 
-		- **`number`**`minwidth`
-			> The minimum width of the window, if it's resizable.
-			> 
-		- **`number`**`minheight`
-			> The minimum height of the window, if it's resizable.
-			>
-		- **`boolean`**`fullscreen`
-			> Should the window be in fullscreen mode. `true` for fullscreen or `false` for windowed mode.
-			> 
-		- **`string`**`fullscreentype`
-			> Use `"desktop"` for borderless fullscreen windowed mode or `"exclusive"` for default fullscreen mode.
-			> 
-		- **`boolean`**`resizable`
-			> `true` if the window should be resizable, `false` otherwise. For windowed mode only.
-			> 
-		- **`boolean`**`resizable` 
-			> `true` if the window is resizable, `false` otherwise. For windowed mode only.
-			> 
-		- **`boolean`**`borderless`
-			> `true` if the window is borderless, `false` otherwise. For windowed mode only.
-			> 
-		- **`boolean`**`centered`
-			> `true` if the window is centered, `false` otherwise. For windowed mode only.
-			> 
-		- **`boolean`**`topmost`
-			> `true` if the window is topmost, `false` otherwise. For windowed mode only.
-			> 
-		- **`number`**`opacity`
-			> **`number`** value between `0` and `1`
-			>
-		- **`number`**`msaa`
-			> **`number`** The number of antialiasing samples to use
----
-- `window.requestAttention()` *Causes the window to request the attention of the user if it is not in the foreground.*
-	> In Windows the taskbar icon will flash, and in OS X the dock icon will bounce.
-	> 
-	###### Returns `nothing`
----
-- `window.setOpacity(value)` *Sets opacity value of the Window.*
-	###### Arguments
-	- **`number`**`opacity`
-		> **`number`** value between `0` and `1`
-		> 
----
-- `window.getOpacity()` *Returns opacity value of the Window.*
-	###### Returns
-	- **`number`**`opacity`
----
-- `window.setPosition(x, y)` *Sets the position of the window on the screen.*
-	> This function sets the paramter of the window `centered` to `false`.
-	> 
-	###### Arguments
-	- **`number`**`x`
-		> X position of the window on screen.
-		> 
-	- **`number`**`y`
-		> Y position of the window on screen.
-		> 
----
-- `window.getPosition()` *Gets the position of the window on the screen.*
-	###### Returns
-	- **`number`**`x`
-		> X position of the window on screen.
-		> 
-	- **`number`**`y`
-		> Y position of the window on screen.
-		> 
----
-- `window.focus()` *Sets focus on the window.*
-	###### Returns `nothing`
----
-- `window.maximize()` *Makes the window as large as possible.*
-	###### Returns `nothing`
----
-- `window.minimize()` *Minimizes the window to the system's task bar / dock.*
-	###### Returns `nothing`
----
-- `window.restore()` *Restores the size and position of the window if it was minimized or maximized.*
-	###### Returns `nothing`
----
-- `window.setTitle(title)` *Sets the window title.*
-	###### Arguments
-	- **`string`**`title`
-		> New title for the window.
-		> 
----
-- `window.getTitle()` *Gets the window title.*
-	###### Returns
-	- **`string`**`title`
-		> Title of the window.
-		> 
----
-- `window.visible(state)` *Makes the window visible / invisible.*
-	###### Arguments
-	- **`boolean`**`state`
-		> `true` if the window is visible or `false` if not.
-		> 
----
-- `window.isVisible()` *Checks if the game window is visible.*
-	###### Returns
-	- **`boolean`**`visible`
-		> `true` if the window is visible or `false` if not.
-		> 
----
-- `window.setFullscreen(fullscreen[, fstype])` *Enters or exits fullscreen.*
-	###### Arguments
-	- **`boolean`**`fullscreen`
-		> `true` for fullscreen, or `false` for windowed mode.
-		> 
-	- **`string`**`fullscreentype`
-		> Use `"desktop"` for borderless fullscreen windowed mode or `"exclusive"` for default fullscreen mode.
-		> 
----
-- `window.getFullscreen()` *Gets whether the window is fullscreen.*
-	###### Returns
-	- **`boolean`**`fullscreen`
-		> `true` if the window is in fullscreen mode, `false` otherwise.
-		> 
-	- **`string`**`fullscreentype`
-		> `"desktop"` if window in borderless fullscreen windowed mode or `"exclusive"` if window is in default fullscreen mode. For windowed mode fullscreen type is `nil`.
-		> 
-
-### Callbacks
-- `love.resize(width, height)` *Called when the window is resized.*
-	> Right now because of missing functionality the callback will only be called when the window is resized programmatically.
-	>
-	###### Arguments
-	- **`number`**`width`
-		> New width of the window after resize.
-		> 
-	- **`number`**`height`
-		> New height of the window after resize.
-		> 
-	###### Example
-	```lua
-	function love.resize(width, height)
-		print(("Window resized to width: %d and height: %d."):format(width, height))
-	end
-	```
-- `love.maximized(state)` *Called when the window is maximized.*
-	###### Arguments
-	- **`boolead`**`state`
-		> New width of the window after resize.
-		> 
-	###### Example
-	```lua
-	function lovr.maximized(state)
-		print("Window maximized: ".. tostring(state))
-	end
-	```
