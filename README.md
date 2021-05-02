@@ -195,7 +195,159 @@ None.
 - **[`string`](#string)** fullscreentype
 - **[`number`](#number)** vsync
 - **[`number`](#number)** msaa
+- **[`number`](#number)** opacity
+- **[`boolean`](#boolean)** topmost
 - **[`boolean`](#boolean)** resizable
 - **[`boolean`](#boolean)** borderless
 - **[`boolean`](#boolean)** centered
 - **[`number`](#number)** display
+
+
+
+
+
+
+## getOpacity()
+###### Function
+``` lua
+opacity = window.getOpacity()
+```
+
+###### Arguments
+None.
+
+###### Returns
+**[`number`](#number)** opacity
+
+
+
+
+
+## getPosition()
+###### Function
+``` lua
+x,y = window.getPosition()
+```
+
+###### Arguments
+None.
+
+###### Returns
+**[`number`](#number)** x <br>
+**[`number`](#number)** y
+
+
+
+
+
+## getTitle()
+###### Function
+``` lua
+title = window.getTitle()
+```
+
+###### Arguments
+None.
+
+###### Returns
+**[`string`](#string)** title
+
+
+
+
+
+## isVisible()
+###### Function
+``` lua
+visible = window.isVisible()
+```
+
+###### Arguments
+None.
+
+###### Returns
+**[`boolean`](#boolean)** visible
+
+
+
+
+
+## maximize()
+###### Function
+``` lua
+window.maximize()
+```
+
+###### Arguments
+None.
+
+###### Returns
+Nothing.
+
+
+
+
+
+## minimize()
+###### Function
+``` lua
+window.minimize()
+```
+
+###### Arguments
+None.
+
+###### Returns
+Nothing.
+
+
+
+
+
+## requestAttention()
+###### Function
+``` lua
+window.requestAttention()
+```
+
+###### Arguments
+None.
+
+###### Returns
+Nothing.
+
+
+
+
+
+## restore()
+###### Function
+``` lua
+window.restore()
+```
+
+###### Arguments
+None.
+
+###### Returns
+Nothing.
+
+
+
+
+
+## setFullscreen()
+###### Function
+``` lua
+window.setFullscreen(fullscreen)
+```
+``` lua
+window.setFullscreen(fullscreen, fullscreentype)
+```
+
+###### Arguments
+**[`boolean`](#boolean)** fullscreen <br>
+**[`string`](#string)** fullscreentype
+
+###### Returns
+Nothing.
