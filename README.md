@@ -30,7 +30,7 @@ lovr.window = require 'lovr-window'
 
 function lovr.load()
 	-- print all window parameters into console
-	local mode = lovr.window.getMode()
+	local width, height, mode = lovr.window.getMode()
 	for k,v in pairs(mode) do
 		print(k, v)
 	end
