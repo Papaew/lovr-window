@@ -366,7 +366,130 @@ Nothing.
 ###### Usage
 ``` lua
 local image_icon = lovr.data.newImage("/icon1.png", false)
-window.setIcon("/icon.png")
+window.setIcon(image_icon)
 
 window.setIcon("/icon2.png") -- or you can set image from jpg/png file
 ```
+
+
+
+
+
+## setMode()
+###### Function
+``` lua
+window.setMode(width, height, flags)
+```
+
+###### Arguments
+**[`number`](#number)** width <br>
+**[`number`](#number)** height <br>
+**[`table`](#table)** flags
+- **[`number`](#number)** x
+- **[`number`](#number)** y
+- **[`number`](#number)** minwidth
+- **[`number`](#number)** minheight
+- **[`number`](#number)** display
+- **[`boolean`](#boolean)** fullscreen
+- **[`string`](#string)** fullscreentype
+- **[`number`](#number)** opacity
+- **[`boolean`](#boolean)** topmost
+- **[`boolean`](#boolean)** resizable
+- **[`boolean`](#boolean)** borderless
+- **[`boolean`](#boolean)** centered
+
+###### Returns
+Nothing.
+
+###### Usage
+``` lua
+window.setMode(1600, 900) -- sets window size to 1600x900 pixels
+
+flags = {
+	fullscreen = true,
+	fullscreentype = "exclusive",
+	display = 2
+}
+lovr.window.setMode(1920, 1080, flags) -- sets window to fullscreen mode on display 2
+```
+
+
+
+
+
+## setOpacity()
+###### Function
+``` lua
+window.setOpacity(value)
+```
+
+###### Arguments
+**[`number`](#number)** value
+
+###### Returns
+Nothing.
+
+
+
+
+
+## setPosition()
+###### Function
+``` lua
+window.setPosition(x,y)
+```
+
+###### Arguments
+**[`number`](#number)** x <br>
+**[`number`](#number)** y
+
+###### Returns
+Nothing.
+
+
+
+
+
+## setTitle()
+###### Function
+``` lua
+window.setTitle(title)
+```
+
+###### Arguments
+**[`string`](#string)** title
+
+###### Returns
+Nothing.
+
+
+
+
+
+## focus()
+###### Function
+``` lua
+window.focus()
+```
+
+###### Arguments
+None.
+
+###### Returns
+Nothing.
+
+
+
+
+
+## visible()
+###### Function
+``` lua
+window.visible(state)
+```
+
+###### Arguments
+**[`boolean`](#boolean)** state
+
+###### Returns
+Nothing.
