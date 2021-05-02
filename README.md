@@ -339,14 +339,6 @@ Nothing.
 ## setFullscreen()
 ###### Function
 ``` lua
-window.setFullscreen(fullscreen)
-```
-###### Arguments
-**[`boolean`](#boolean)** fullscreen <br>
-
-<br>
-
-``` lua
 window.setFullscreen(fullscreen, fullscreentype)
 ```
 ###### Arguments
@@ -363,14 +355,6 @@ Nothing.
 ## setIcon()
 ###### Function
 ``` lua
-window.setIcon(filepath)
-```
-###### Arguments
-**[`string`](#string)** filepath
-
-<br>
-
-``` lua
 window.setIcon(source)
 ```
 ###### Arguments
@@ -378,3 +362,11 @@ window.setIcon(source)
 
 ###### Returns
 Nothing.
+
+###### Usage
+``` lua
+local image_icon = lovr.data.newImage("/icon1.png", false)
+window.setIcon("/icon.png")
+
+window.setIcon("/icon2.png") -- or you can set image from jpg/png file
+```
