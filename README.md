@@ -344,6 +344,7 @@ window.setFullscreen(fullscreen)
 ###### Arguments
 **[`boolean`](#boolean)** fullscreen <br>
 
+---
 
 ``` lua
 window.setFullscreen(fullscreen, fullscreentype)
@@ -367,6 +368,7 @@ window.setIcon(filepath)
 ###### Arguments
 **[`string`](#string)** filepath
 
+---
 
 ``` lua
 window.setIcon(source)
