@@ -99,11 +99,11 @@ width, height = window.getDisplayDimensions( index )
 ```
 
 ###### Arguments
-- **[`number`](Home#lua-types)** index
+**[`number`](Home#lua-types)** index
 
 ###### Returns
-- **[`number`](#number)** width
-- **[`number`](#number)** height
+**[`number`](#number)** width
+**[`number`](#number)** height
 
 
 
@@ -119,7 +119,7 @@ count = window.getDisplayCount()
 None.
 
 ###### Returns
-- **[`number`](#number)** count
+**[`number`](#number)** count
 
 
 
@@ -132,10 +132,10 @@ name = window.getDisplayName( index )
 ```
 
 ###### Arguments
-- **[`number`](Home#lua-types)** index
+**[`number`](Home#lua-types)** index
 
 ###### Returns
-- **[`string`](#string)** name
+**[`string`](#string)** name
 
 
 
@@ -151,8 +151,8 @@ fullscreen, fullscreentype = window.getFullscreen()
 None.
 
 ###### Returns
-- **[`boolean`](#boolean)** fullscreen
-- **[`string`](#string)** fullscreentype
+**[`boolean`](#boolean)** fullscreen
+**[`string`](#string)** fullscreentype
 
 
 
@@ -168,4 +168,34 @@ icon = window.getIcon()
 None.
 
 ###### Returns
-- **[`Image`](https://lovr.org/docs/v0.15.0/Image)** icon
+**[`Image`](https://lovr.org/docs/v0.15.0/Image)** icon
+
+
+
+
+
+## getMode()
+###### Function
+``` lua
+width, height, flags = window.getMode()
+```
+
+###### Arguments
+None.
+
+###### Returns
+**[`number`](#number)** width
+**[`number`](#number)** height
+**[`table`](#table)** flags
+- **[`number`](#number)** x
+- **[`number`](#number)** y
+- **[`number`](#number)** minwidth
+- **[`number`](#number)** minheight
+- **[`boolean`](#boolean)** fullscreen
+- **[`string`](#string)** fullscreentype
+- **[`number`](#number)** vsync
+- **[`number`](#number)** msaa
+- **[`boolean`](#boolean)** resizable
+- **[`boolean`](#boolean)** borderless
+- **[`boolean`](#boolean)** centered
+- **[`number`](#number)** display
