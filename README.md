@@ -36,7 +36,7 @@ function lovr.load()
 	end
 	
 	-- sets window resolution, opacity, msaa and title
-	lovr.window.setMode(1280, 720, {title = "Hello, Window!", resizable = true, opacity = 0.5, msaa = 4})
+	lovr.window.setMode(1280, 720, {title = "Hello, Window!", resizable = true, opacity = 0.5})
 end
 
 function lovr.maximized( v, w,h )
