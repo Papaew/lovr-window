@@ -151,7 +151,7 @@ fullscreen, fullscreentype = window.getFullscreen()
 None.
 
 ###### Returns
-**[`boolean`](#boolean)** fullscreen
+**[`boolean`](#boolean)** fullscreen <br>
 **[`string`](#string)** fullscreentype
 
 
@@ -184,8 +184,8 @@ width, height, flags = window.getMode()
 None.
 
 ###### Returns
-**[`number`](#number)** width
-**[`number`](#number)** height
+**[`number`](#number)** width <br>
+**[`number`](#number)** height <br>
 **[`table`](#table)** flags
 - **[`number`](#number)** x
 - **[`number`](#number)** y
