@@ -341,13 +341,38 @@ Nothing.
 ``` lua
 window.setFullscreen(fullscreen)
 ```
+###### Arguments
+**[`boolean`](#boolean)** fullscreen <br>
+
+
 ``` lua
 window.setFullscreen(fullscreen, fullscreentype)
 ```
-
 ###### Arguments
 **[`boolean`](#boolean)** fullscreen <br>
 **[`string`](#string)** fullscreentype
+
+###### Returns
+Nothing.
+
+
+
+
+
+## setIcon()
+###### Function
+``` lua
+window.setIcon(filepath)
+```
+###### Arguments
+**[`string`](#string)** filepath
+
+
+``` lua
+window.setIcon(source)
+```
+###### Arguments
+**[`Image`](https://lovr.org/docs/v0.15.0/Image)** source
 
 ###### Returns
 Nothing.
