@@ -90,11 +90,31 @@ local W = C.glfwGetCurrentContext()
 local window = {}
 local __monitors
 ---------------------------------------------------------------------------------------------------------------
-local __params = {}
+local __params = { -- default parameters list
+	title = 'LÖVR',
+	icon = nil,
+	fullscreen = false,
+	fullscreentype = "desktop",
+	width = 1080,
+	height = 600,
+	minwidth = 320,
+	minheight = 240,
+	x = nil,
+	y = nil,
+	display = 1,
+	centered = false,
+	topmost = false,
+	borderless = false,
+	resizable = false,
+	opacity = 1,
+	vsync = 1,
+	msaa = 0
+}
 if conf then
 	for k,v in pairs(conf) do
 		__params[k] = v
 	end
+
 	if type(__params.icon) == 'string' then
 		__params.icon = lovr.data.newImage(__params.icon, false)
 	end
@@ -139,6 +159,8 @@ function window.getDisplayDimensions( index )
 	local screenmode = C.glfwGetVideoMode( __monitors[index-1] )
 	return screenmode.width, screenmode.height
 end
+
+---------------------------------------------------------------------------------------------------------------
 
 function window.setIcon( source )
 	if not source then
