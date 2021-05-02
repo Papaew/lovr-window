@@ -546,7 +546,7 @@ end
 
 
 
-## windowmoved()
+## dragdrop()
 ###### Function
 ``` lua
 lovr.dragdrop( paths )
