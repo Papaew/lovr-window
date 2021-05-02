@@ -92,3 +92,38 @@ end
 
 
 # Documentation
+## getDisplayDimensions()
+###### Function
+``` lua
+width, height = window.getDisplayDimensions( index )
+```
+
+###### Arguments
+- **[`number`](Home#lua-types)** index
+
+###### Returns
+- **[`number`](#number)** width
+- **[`number`](#number)** height
+
+
+## getDisplayCount()
+###### Function
+``` lua
+count = window.getDisplayCount( )
+```
+###### Arguments
+None.
+
+###### Returns
+- **[`number`](#number)** count
+
+
+
+###### number
+> lua number
+###### string
+> lua string
+###### table
+> lua table
+###### boolean
+> lua boolean
