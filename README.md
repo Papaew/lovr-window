@@ -119,11 +119,9 @@ None.
 
 
 
-###### number
-> lua number
-###### string
-> lua string
-###### table
-> lua table
-###### boolean
-> lua boolean
+|lua types|
+|-|
+| ###### number |
+| ###### string |
+| ###### table |
+| ###### boolean |
