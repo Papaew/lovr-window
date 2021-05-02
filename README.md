@@ -86,9 +86,9 @@ end
 ###### Callbacks
 | Callback | Description |
 |-|-|
-[love.maximized( state, w,h )](#maximized) | Called when the window is maximized/restored |
-[love.windowmoved( x,y )](#windowmoved) | Callback function triggered when the window is moved |
-[love.dragdrop( paths )](#dragdrop) | Callback function triggered when a file/directory is dragged and dropped onto the window |
+[lovr.maximized( state, w,h )](#maximized) | Called when the window is maximized/restored |
+[lovr.windowmoved( x,y )](#windowmoved) | Callback function triggered when the window is moved |
+[lovr.dragdrop( paths )](#dragdrop) | Callback function triggered when a file/directory is dragged and dropped onto the window |
 
 
 # Documentation
@@ -493,3 +493,77 @@ window.visible(state)
 
 ###### Returns
 Nothing.
+
+
+
+
+## maximized()
+###### Function
+``` lua
+lovr.maximized( state, width,height )
+```
+
+###### Arguments
+**[`boolean`](#boolean)** state
+**[`number`](#number)** width
+**[`number`](#number)** height
+
+###### Returns
+Nothing.
+
+###### Usage
+``` lua
+function lovr.maximized( v, w,h )
+	print(v and "maximized" or "restored")
+end
+```
+
+
+
+
+
+## windowmoved()
+###### Function
+``` lua
+lovr.windowmoved( x,y )
+```
+
+###### Arguments
+**[`number`](#number)** x
+**[`number`](#number)** y
+
+###### Returns
+Nothing.
+
+###### Usage
+``` lua
+function lovr.windowmoved( x,y )
+	print("Current window position:", x,y)
+end
+```
+
+
+
+
+
+## windowmoved()
+###### Function
+``` lua
+lovr.dragdrop( paths )
+```
+
+###### Arguments
+**[`table`](#table)** paths
+
+###### Returns
+Nothing.
+
+###### Usage
+``` lua
+function lovr.dragdrop( paths )
+	for i=1, #paths do
+		--print all file/directory paths dropped on the window
+		print(paths[i])
+	end
+end
+```
