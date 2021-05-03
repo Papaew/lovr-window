@@ -504,8 +504,8 @@ lovr.maximized( state, width,height )
 ```
 
 ###### Arguments
-**[`boolean`](#boolean)** state
-**[`number`](#number)** width
+**[`boolean`](#boolean)** state <br>
+**[`number`](#number)** width <br>
 **[`number`](#number)** height
 
 ###### Returns
@@ -529,7 +529,7 @@ lovr.windowmoved( x,y )
 ```
 
 ###### Arguments
-**[`number`](#number)** x
+**[`number`](#number)** x <br>
 **[`number`](#number)** y
 
 ###### Returns
