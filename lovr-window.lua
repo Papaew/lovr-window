@@ -264,7 +264,7 @@ function window.setFullscreen( state, fstype, index )
 			C.glfwSetWindowAttrib(W, C.GLFW_DECORATED, 0)
 
 			local mx, my = ffi.new('int[1]'), ffi.new('int[1]')
-			C.glfwGetMonitorPos(__monitors[flags.display-1], mx, my)
+			C.glfwGetMonitorPos(__monitors[index], mx, my)
 
 			C.glfwSetWindowMonitor(W, nil, mx[0],my[0], screenmode.width, screenmode.height, 0)
 		elseif fstype == 'exclusive' then
