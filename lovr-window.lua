@@ -21,7 +21,7 @@ ffi.cdef [[
 	} GLFWvidmode;
 
 	typedef struct GLFWwindow GLFWwindow;
-	GLFWwindow* glfwGetCurrentContext(void);
+	GLFWwindow* os_get_glfw_window(void);
 	
 	typedef struct GLFWmonitor GLFWmonitor;
 	GLFWmonitor** glfwGetMonitors(int *count);
@@ -86,7 +86,7 @@ ffi.cdef [[
 	GLFWdropfun glfwSetDropCallback(GLFWwindow* window, GLFWdropfun callback);	
 	
 ]]
-local W = C.glfwGetCurrentContext()
+local W = ffi.C.os_get_glfw_window()
 local window = {}
 local __monitors
 ---------------------------------------------------------------------------------------------------------------
